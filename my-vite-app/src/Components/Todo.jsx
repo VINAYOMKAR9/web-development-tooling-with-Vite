@@ -1,20 +1,25 @@
 import React, { useState } from 'react'
 
 const TodoList=({todo,handleToggle,handleDelete})=>{
-    return (<div>      
+    return (<div style={{margin:'auto', width:'50%',display:'flex',justifyContent:'row',gap:'10px'}}>      
         {
             todo.map((el)=>{
                 return(
                 <div key={el.id}  style={{
+                    display:'flex',flexDirection:'column',
                     backgroundColor:el.status?'green':'orange', 
                     padding:'3px', 
-                    margin: '4px'}}>
-                    <h2>{el.id}</h2>
+                    margin: 'auto',
+                    borderRadius:'5px',
+                    textAlign:'center'
+            
+                    }}>
                     <h4>{el.title}</h4>
-                    <b>{el.status?'completed':'un-complete'}</b>
-                    <button onClick={()=>handleToggle(el.id)}> ToogleStatus</button>
-                    <button onClick={()=>handleDelete(el.id)}> ToogleDelete</button>
-
+                    <b >{el.status?'completed':'un-complete'}</b>
+                    <div style={{margin:'25px' ,display:'flex',justifyContent:'space-between'}}>
+                    <button onClick={()=>handleToggle(el.id)}> Status</button>
+                    <button onClick={()=>handleDelete(el.id)}> Delete</button>
+                    </div>
 
                 </div>
                 )
